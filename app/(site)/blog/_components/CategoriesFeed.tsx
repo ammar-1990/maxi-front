@@ -13,16 +13,16 @@ const CategoriesFeed = async ({category}: Props) => {
     <Container className="flex items-center gap-3 justify-center">
       <SuperButton
         buttonType="pushButton"
-        href="/categories"
+        href="/blog"
         title="All"
-        className={cn("cursor-pointer",category && "text-site-primary bg-white hover:bg-site-primary/50")}
+        className={cn("cursor-pointer",category && " bg-white text-black hover:bg-site-primary/50")}
       />
       {categories.map((item) => (
         <SuperButton
-          className={cn("cursor-pointer capitalize",category!==item.slug && 'text-site-primary bg-white hover:bg-site-primary/50')}
+          className={cn("cursor-pointer capitalize",category!==item.slug && 'text-black bg-white hover:bg-site-primary/50')}
           key={item.id}
           buttonType="pushButton"
-          href={`/categories?category=${item.slug}`}
+          href={`/blog?category=${item.slug}`}
           title={item.name}
         />
       ))}

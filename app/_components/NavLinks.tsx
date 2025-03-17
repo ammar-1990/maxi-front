@@ -18,19 +18,20 @@ const NavLinks = (props: Props) => {
             active:pathname === '/',          
         },
         {
+            title:'blogs',
+            href:'/blog',    
+            active:pathname === '/blog',           
+        },
+        {
             title:'about',
             href:'/about',       
             active:pathname === '/about',        
         },
-        {
-            title:'categories',
-            href:'/categories',    
-            active:pathname === '/categories',           
-        },
+        
 
     ]
   return (
-    <nav className="flex items-center gap-3">
+    <nav className="flex items-center gap-6">
         {Links.map((item,index)=><Link key={`navlink-${index}`} href={item.href} className={cn("capitalize font-[500]",item.active && 'text-site-primary')}>{item.title}</Link>)}
     </nav>
   )
