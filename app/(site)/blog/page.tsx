@@ -6,24 +6,24 @@ import SuspenseComponent from '@/components/SuspensComponent'
  
 
 type Props = {
-  searchParams:Promise<{category:string | undefined,topic:string[] | undefined}>
+  searchParams:Promise<{category:string | undefined,topic:string[] | undefined,blogStyle:string[] | undefined}>
 }
 
 const page = async ({searchParams}: Props) => {
 
-  const {category, topic} = await searchParams
+  const {category, topic, blogStyle} = await searchParams
   return (
     <div>
 <CategoriesFeed category={category}/>
-      <Container className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mt-12 gap-2'>
+      <Container className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 mt-12 gap-2'>
 
     {/* filter */}
     <SuspenseComponent className='' key={category}>
-      <Filter  category={category}  topic={topic} />
+      <Filter  category={category}  topic={topic} blogStyle={blogStyle} />
     </SuspenseComponent>
 
     {/* blogs */}
-    <div className='md:col-span-2 xl:col-span-3'>
+    <div className='md:col-span-2 xl:col-span-4'>
       blogs
     </div>
       </Container>
