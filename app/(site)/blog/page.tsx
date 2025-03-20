@@ -13,6 +13,9 @@ type Props = {
   }>;
 };
 
+
+
+
 const page = async ({ searchParams }: Props) => {
   const { category, topic, blogStyle } = await searchParams;
   return (
