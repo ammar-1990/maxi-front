@@ -57,11 +57,15 @@ model Post {
   published      Boolean @default(false)
   views          View[]
 
+  isFeatured Boolean @default(false)
+
   postTypeId String
   postType   PostType @relation(fields: [postTypeId], references: [id])
 
   subCategoryId String
   subCategory   SubCategory @relation(fields: [subCategoryId], references: [id])
+
+  author String?
 
   tags         Tag[]
   monetization Monetization[]

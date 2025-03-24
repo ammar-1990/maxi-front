@@ -19,7 +19,7 @@ type Props = {
 const page = async ({ searchParams }: Props) => {
   const { category, topic, blogStyle } = await searchParams;
   return (
-    <div>
+    <div className="p-3">
       <CategoriesFeed category={category} />
       <Container className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 mt-12 gap-2">
         {/* filter */}

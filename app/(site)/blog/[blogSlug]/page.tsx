@@ -81,7 +81,7 @@ const page = async ({ params }: Props) => {
             src={blog.imageUrl}
             alt={blog.title + "image"}
             className="max-h-[350px] w-full mt-5 rounded-lg overflow-hidden "
-            imgClassName="blur-[3px]"
+            imgClassName="blur-[5px]"
           />
         </div>
       )}

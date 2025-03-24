@@ -20,12 +20,26 @@ const BlogsFeed =async ({postType, subCategory, category}: Props) => {
                 slug:{
                     in: Array.isArray(subCategory) ? subCategory : [subCategory]
                 }
-            }})
+            }}),
+            published:true,
+       
+        },
+        include:{
+            subCategory:{
+                select:{
+                    name:true,
+                    category:{
+                        select:{
+                            name:true
+                        }
+                    }
+                }
+            }
         }
     })
  
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2'>
+    <div className='flex flex-col gap-2'>
         {blogs.map(blog=> <BlogCard key={blog.id}  post={blog}/>
          )}
     </div>
