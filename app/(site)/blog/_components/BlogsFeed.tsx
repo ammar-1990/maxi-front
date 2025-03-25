@@ -28,9 +28,11 @@ const BlogsFeed =async ({postType, subCategory, category}: Props) => {
             subCategory:{
                 select:{
                     name:true,
+                    slug:true,
                     category:{
                         select:{
-                            name:true
+                            name:true,
+                            slug:true
                         }
                     }
                 }

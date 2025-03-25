@@ -4,8 +4,10 @@ import ImageComponent from "@/components/ImageComponent";
 import prisma from "@/lib/prisma";
 import { Metadata, ResolvingMetadata } from "next";
 import dynamic from "next/dynamic";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import React from "react";
+import {subHours} from 'date-fns'
 
 type Props = {
   params: Promise<{ blogSlug: string }>;
@@ -65,6 +67,29 @@ const page = async ({ params }: Props) => {
   });
 
   if (!blog) return notFound();
+
+  const headerList =await headers()
+  const ip = headerList.get('x-forwarded-for') || 'unknown'
+  const userAgent = headerList.get('user-agent') || 'unknown';
+  const existing = await prisma.view.findFirst({
+    where: {
+      postId: blog.id,
+      ip,
+      createdAt: {
+        gte: subHours(new Date(), 24),
+      },
+    },
+  });
+
+  if (!existing) {
+    await prisma.view.create({
+      data: {
+        postId: blog.id,
+        ip,
+        userAgent,
+      },
+    });
+  }
   return (
     <Container>
       <p className="capitalize font-semibold text-5xl">{blog.title}</p>

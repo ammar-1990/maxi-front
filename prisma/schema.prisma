@@ -18,6 +18,7 @@ model Category {
   name          String        @unique
   slug          String        @unique
   description   String?
+  image         String?
   subCategories SubCategory[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt

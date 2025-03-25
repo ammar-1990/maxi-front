@@ -9,8 +9,10 @@ type Props = {
   post: Post & {
     subCategory: {
       name: string;
+      slug:string
       category: {
         name: string;
+        slug:string
       };
     };
   };
@@ -20,7 +22,7 @@ type Props = {
 const BlogCard = ({ post, isMain }: Props) => {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/blog/${post.subCategory.category.slug}/${post.subCategory.slug}/${post.slug}`}
       className={cn(
         "rounded-md  border overflow-hidden relative group cursor-pointer w-full flex flex-col md:flex-row",
         isMain && "md:flex-col"

@@ -18,9 +18,11 @@ const FeaturedPosts = async (props: Props) => {
       subCategory: {
         select: {
           name: true,
+          slug:true,
           category: {
             select: {
               name: true,
+              slug:true
             },
           },
         },
