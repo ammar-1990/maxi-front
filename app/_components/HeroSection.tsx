@@ -14,7 +14,7 @@ const HeroSection = (props: Props) => {
     </p>
   </div>
  {/* video */}
- <div className='w-full max-w-[900px] mx-auto aspect-video border rounded-lg'>
+ <div className='w-full max-w-[900px] mx-auto aspect-video border rounded-md'>
     
  </div>
     </div>

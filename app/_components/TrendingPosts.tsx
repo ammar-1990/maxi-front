@@ -33,7 +33,7 @@ const TrendingPosts =async (props: Props) => {
   return (
     <div>
     <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-center">Trending Now</h2>
-    <div className="mt-2 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-3 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map(post=><BlogCard key={post.id} post={post}  isMain={true}/>)}
 
     </div>

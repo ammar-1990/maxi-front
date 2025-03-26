@@ -10,7 +10,7 @@ import React from "react";
 import {subHours} from 'date-fns'
 
 type Props = {
-  params: Promise<{ blogSlug: string }>;
+  params: Promise<{ blogSlug: string,categorySlug:string,subCategorySlug:string }>;
 };
 export async function generateStaticParams() {
   const blogsSlug = await prisma.post.findMany({
@@ -59,10 +59,16 @@ export async function generateMetadata(
 }
 
 const page = async ({ params }: Props) => {
-  const { blogSlug } = await params;
+  const { blogSlug,categorySlug,subCategorySlug } = await params;
   const blog = await prisma.post.findUnique({
     where: {
       slug: blogSlug,
+      subCategory:{
+        slug:subCategorySlug,
+        category:{
+          slug:categorySlug
+        }
+      }
     },
   });
 
