@@ -1,5 +1,8 @@
 import Link from "next/link";
 import NewsletterForm from "../(site)/newsletter/_component/NewsletterForm";
+import { FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -62,15 +65,15 @@ const Footer = () => {
                 />
               </div>
             </li>
-            <li className="flex items-center gap-2 mt-4">
+            <li className="flex items-center gap-4 mt-8">
               <Link href="https://twitter.com/yourhandle" target="_blank">
-                Twitter
+              <FaTiktok className="hover:text-black size-6" />
               </Link>
               <Link href="https://instagram.com/yourhandle" target="_blank">
-                Instagram
+                <FaInstagram className="hover:text-[#E1306C] size-6" />
               </Link>
               <Link href="https://youtube.com/@yourchannel" target="_blank">
-                YouTube
+              <FaYoutube className="hover:text-red-600 transition size-6" />
               </Link>
             </li>
        

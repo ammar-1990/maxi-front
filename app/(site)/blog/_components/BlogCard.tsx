@@ -24,7 +24,7 @@ const BlogCard = ({ post, isMain }: Props) => {
     <Link
       href={`/blog/${post.subCategory.category.slug}/${post.subCategory.slug}/${post.slug}`}
       className={cn(
-        "rounded-md  border overflow-hidden relative group cursor-pointer w-full flex flex-col md:flex-row",
+        "rounded-md  shadow-sm overflow-hidden relative group cursor-pointer w-full flex flex-col md:flex-row",
         isMain && "md:flex-col"
       )}
     >

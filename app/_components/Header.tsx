@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import Container from "./Container";
+import SearchComponent from "./SearchComponent";
 
 type Props = {};
 
@@ -18,7 +19,7 @@ const Header = (props: Props) => {
           />
           <NavLinks />
         </div>
-        <div>search</div>
+        <SearchComponent/>
       </Container>
 
     </div>
