@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useSearch } from "../(site)/hooks/useSearch";
 import Link from "next/link";
+import { highlightText } from "@/lib/utils";
 
 type Props = {};
 
@@ -28,7 +29,7 @@ const SearchComponent = (props: Props) => {
           <Search />
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-5xl">
+      <DialogContent className="sm:max-w-5xl w-[95vw]">
         <div>
           {/* header */}
           <DialogHeader>
@@ -57,10 +58,18 @@ const SearchComponent = (props: Props) => {
                       <span className="top-3 right-3 bg-site-primary z-10 text-white text-xs rounded-full px-3 py-1 absolute capitalize font-[500]">
                         {post.subCategory.category.name}
                       </span>
-                      <p className="text-xs font-[500] ">{post.subCategory.name}</p>
-                      <h3 className="font-medium">{post.title}</h3>
+                      <p className="text-xs font-[500] ">
+                        {post.subCategory.name}
+                      </p>
+                      <h3 className="font-medium">
+                        {highlightText(post.title, query)}
+                      </h3>
                       <p className="text-xs text-muted-foreground">
-                        {post.excerpt?.slice(0, 100)}...
+                        {highlightText(
+                          post.excerpt?.slice(0, 100) || "",
+                          query
+                        )}
+                        ...
                       </p>
                     </Link>
                   </DialogClose>
