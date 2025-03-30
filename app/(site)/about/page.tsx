@@ -1,4 +1,5 @@
 import Container from "@/app/_components/Container";
+import ImageComponent from "@/components/ImageComponent";
 import { Metadata } from "next";
 import React from "react";
 
@@ -91,13 +92,14 @@ const page = (props: Props) => {
               </li>
               <li>📺 Original YouTube videos and mini-series</li>
               <li>🎬 Short-form content for TikTok and Instagram Reels</li>
-              <li>👶 Animated stories and future kids’ series</li>
+              <li>👶 Animated stories and future kids&apos; series</li>
             </ul>
           </div>
-          <img
-            src="/images/about-format.jpg"
+          <ImageComponent
+            src="/what-is-maxi.jpeg"
             alt="Formats we publish"
-            className="rounded-lg shadow-sm w-full"
+            className="rounded-lg shadow-sm w-full overflow-hidden"
+            aspect="square"
           />
         </section>
 
@@ -135,10 +137,11 @@ const page = (props: Props) => {
 
         {/* Vision */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <img
-            src="/images/about-vision.jpg"
+          <ImageComponent
+            src="/why-we-exist.png"
             alt="Our vision"
-            className="rounded-lg shadow-sm w-full"
+            className="rounded-lg shadow-sm w-full overflow-hidden"
+            aspect="square"
           />
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold text-foreground">
