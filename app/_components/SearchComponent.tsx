@@ -66,7 +66,7 @@ const SearchComponent = (props: Props) => {
                       </h3>
                       <p className="text-xs text-muted-foreground">
                         {highlightText(
-                          post.excerpt?.slice(0, 100) || "",
+                          post.excerpt || "",
                           query
                         )}
                         ...

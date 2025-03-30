@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React from 'react'
 
-type Props = {src:string,alt:string,className?:string,imgClassName?:string,aspect:'square' | 'video'}
+type Props = {src:string,alt:string,className?:string,imgClassName?:string,aspect?:'square' | 'video'}
 
 const ImageComponent = ({alt,aspect,src,className,imgClassName}: Props) => {
   return (

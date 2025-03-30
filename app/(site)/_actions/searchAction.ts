@@ -10,13 +10,13 @@ export async function searchPosts(query: string) {
       OR: [
         {
           title: {
-            contains: query,
+            contains: `${query}`,
             mode: "insensitive",
           },
         },
         {
           excerpt: {
-            contains: query,
+            contains: `${query}`,
             mode: "insensitive",
           },
         },

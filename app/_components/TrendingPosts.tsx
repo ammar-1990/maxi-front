@@ -14,7 +14,7 @@ const TrendingPosts =async (props: Props) => {
     WHERE "createdAt" >= NOW() - INTERVAL '7 days'
     GROUP BY "postId"
     ORDER BY "viewCount" DESC
-    LIMIT 5;
+    LIMIT 6;
   `;
 
   const posts = await prisma.post.findMany({

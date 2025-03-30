@@ -113,18 +113,18 @@ const page = async ({ params }: Props) => {
     <Container>
       <p className="capitalize font-semibold text-5xl">{blog.title}</p>
       {blog.imageUrl && (
-        <div className="relative">
+        <div className="relative border mt-4 h-[350px] rounded-md overflow-hidden">
           <ImageComponent
-            aspect="square"
+          imgClassName="object-contain"
             src={blog.imageUrl}
             alt={blog.title + "image"}
-            className=" overflow-hidden absolute top-0 left-[50%] translate-x-[-50%] z-30 w-[350px]"
+            className=" overflow-hidden absolute top-0 left-[50%] translate-x-[-50%] z-30 h-full"
           />
           <ImageComponent
-            aspect="video"
+          
             src={blog.imageUrl}
             alt={blog.title + "image"}
-            className="max-h-[350px] w-full mt-5 rounded-lg overflow-hidden "
+            className=" w-full   rounded-lg overflow-hidden h-full"
             imgClassName="blur-[5px]"
           />
         </div>
