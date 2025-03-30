@@ -16,11 +16,24 @@ export async function generateStaticParams() {
   const blogsSlug = await prisma.post.findMany({
     select: {
       slug: true,
+      subCategory:{
+        select:{
+          slug:true,
+          category:{
+            select:{
+              slug:true
+            }
+          }
+        }
+      }
     },
   });
 
   return blogsSlug.map((item) => ({
-    blogsSlug: item.slug,
+    blogSlug: item.slug,
+    categorySlug:item.subCategory.category.slug,
+    subCategorySlug:item.subCategory.slug
+
   }));
 }
 
