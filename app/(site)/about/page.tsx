@@ -92,7 +92,7 @@ const page = (props: Props) => {
               </li>
               <li>📺 Original YouTube videos and mini-series</li>
               <li>🎬 Short-form content for TikTok and Instagram Reels</li>
-              <li>👶 Animated stories and future kids&apos; series</li>
+              <li>👶 Animated stories and future kids’ series</li>
             </ul>
           </div>
           <ImageComponent
@@ -154,7 +154,7 @@ const page = (props: Props) => {
               across every medium.
             </p>
             <p>
-              Whether you're a curious reader, a visual learner, or a future fan
+              Whether you&apos;re a curious reader, a visual learner, or a future fan
               of animated stories — MAXI is built for you.
             </p>
           </div>
