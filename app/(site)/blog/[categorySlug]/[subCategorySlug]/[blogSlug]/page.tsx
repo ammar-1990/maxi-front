@@ -12,30 +12,33 @@ import {subHours} from 'date-fns'
 type Props = {
   params: Promise<{ blogSlug: string,categorySlug:string,subCategorySlug:string }>;
 };
-export async function generateStaticParams() {
-  const blogsSlug = await prisma.post.findMany({
-    select: {
-      slug: true,
-      subCategory:{
-        select:{
-          slug:true,
-          category:{
-            select:{
-              slug:true
-            }
-          }
-        }
-      }
-    },
-  });
 
-  return blogsSlug.map((item) => ({
-    blogSlug: item.slug,
-    categorySlug:item.subCategory.category.slug,
-    subCategorySlug:item.subCategory.slug
+// export async function generateStaticParams() {
+//   const blogsSlug = await prisma.post.findMany({
+//     select: {
+//       slug: true,
+//       subCategory:{
+//         select:{
+//           slug:true,
+//           category:{
+//             select:{
+//               slug:true
+//             }
+//           }
+//         }
+//       }
+//     },
+//   });
 
-  }));
-}
+//   return blogsSlug.map((item) => ({
+//     blogSlug: item.slug,
+//     categorySlug:item.subCategory.category.slug,
+//     subCategorySlug:item.subCategory.slug
+
+//   }));
+// }
+
+export const revalidate = 0
 
 export async function generateMetadata(
   { params }: Props,

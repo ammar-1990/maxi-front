@@ -5,6 +5,8 @@ import FeaturedPosts from "../_components/FeaturedPosts";
 import TrendingPosts from "../_components/TrendingPosts";
 import CategoriesFeed from "../_components/CategoriesFeed";
 
+export const revalidate = 0
+
 export default function Home() {
   return (
     <div className="p-3">

@@ -14,7 +14,7 @@ type Props = {
 };
 
 
-
+export const revalidate = 0
 
 const page = async ({ searchParams }: Props) => {
   const { category, topic, blogStyle } = await searchParams;
