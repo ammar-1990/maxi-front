@@ -5,7 +5,11 @@ import CategoryCard from './CategoryCard'
 type Props = {}
 
 const CategoriesFeed = async(props: Props) => {
-    const categories = await prisma.category.findMany()
+    const categories = await prisma.category.findMany({
+     orderBy:{
+      createdAt:"desc"
+     }
+    })
   return (
     <div>
            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-center">Categories</h2>

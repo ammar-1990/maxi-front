@@ -19,7 +19,7 @@ export const throwCustomError = (message: string): never => {
 
 export function highlightText(text: string, query: string) {
   if (!query) return text;
-
+console.log(text,query)
   // Escape special RegExp characters in the query
   const escapedQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
   const regex = new RegExp(`(${escapedQuery})`, 'gi');

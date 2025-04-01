@@ -65,10 +65,11 @@ const page = (props: Props) => {
             stories — through blogs, short videos, and original series.
           </p>
           <video
+          src="/maxi.mp4"
             autoPlay
             muted
-            loop
-            playsInline
+           
+            controls
             className="rounded-lg mx-auto shadow-sm w-full max-w-[900px]"
           />
         </section>

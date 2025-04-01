@@ -19,7 +19,15 @@ export async function searchPosts(query: string) {
             contains: `${query}`,
             mode: "insensitive",
           },
+       
         },
+      {  subCategory:{
+          name:{
+            contains: `${query}`,
+            mode:'insensitive'
+          },
+          
+        }}
       ],
       published: true,
     },

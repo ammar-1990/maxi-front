@@ -59,7 +59,7 @@ const SearchComponent = (props: Props) => {
                         {post.subCategory.category.name}
                       </span>
                       <p className="text-xs font-[500] ">
-                        {post.subCategory.name}
+                      {highlightText(post.subCategory.name, query)}
                       </p>
                       <h3 className="font-medium">
                         {highlightText(post.title, query)}

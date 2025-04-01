@@ -37,6 +37,7 @@ export const useSearch = () => {
 
     startTransition(async () => {
       const posts = await searchPosts(debouncedQuery);
+      console.log("NAME::",posts[2]?.subCategory?.name.trim())
       setResults(posts);
     });
   }, [debouncedQuery]);
