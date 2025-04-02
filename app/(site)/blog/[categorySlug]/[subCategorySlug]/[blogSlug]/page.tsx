@@ -7,10 +7,16 @@ import dynamic from "next/dynamic";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import React from "react";
-import {subHours} from 'date-fns'
+import { subHours } from "date-fns";
+import Link from "next/link";
+import BlogCard from "../../../_components/BlogCard";
 
 type Props = {
-  params: Promise<{ blogSlug: string,categorySlug:string,subCategorySlug:string }>;
+  params: Promise<{
+    blogSlug: string;
+    categorySlug: string;
+    subCategorySlug: string;
+  }>;
 };
 
 // export async function generateStaticParams() {
@@ -38,7 +44,7 @@ type Props = {
 //   }));
 // }
 
-export const revalidate = 0
+export const revalidate = 0;
 
 export async function generateMetadata(
   { params }: Props,
@@ -75,24 +81,42 @@ export async function generateMetadata(
 }
 
 const page = async ({ params }: Props) => {
-  const { blogSlug,categorySlug,subCategorySlug } = await params;
+  const { blogSlug, categorySlug, subCategorySlug } = await params;
   const blog = await prisma.post.findUnique({
     where: {
       slug: blogSlug,
-      subCategory:{
-        slug:subCategorySlug,
-        category:{
-          slug:categorySlug
-        }
-      }
+      subCategory: {
+        slug: subCategorySlug,
+
+        category: {
+          slug: categorySlug,
+        },
+      },
+    },
+    include: {
+      subCategory: {
+        select: {
+          slug: true,
+          category: {
+            select: {
+              slug: true,
+            },
+          },
+        },
+      },
+      postType: {
+        select: {
+          slug: true,
+        },
+      },
     },
   });
 
   if (!blog) return notFound();
 
-  const headerList =await headers()
-  const ip = headerList.get('x-forwarded-for') || 'unknown'
-  const userAgent = headerList.get('user-agent') || 'unknown';
+  const headerList = await headers();
+  const ip = headerList.get("x-forwarded-for") || "unknown";
+  const userAgent = headerList.get("user-agent") || "unknown";
   const existing = await prisma.view.findFirst({
     where: {
       postId: blog.id,
@@ -112,19 +136,63 @@ const page = async ({ params }: Props) => {
       },
     });
   }
+
+ 
+ 
+
+ 
+
+  const relatedBlogs = await prisma.post.findMany({
+    where: {
+      AND: [
+        {
+          subCategory: {
+            slug: blog.subCategory.slug,
+          },
+        },
+        {
+          NOT: {
+            slug: blog.slug,
+          },
+        },
+      ],
+     
+    },
+    include: {
+      subCategory: {
+        select: {
+          slug: true,
+          name: true,
+          category: {
+            select: {
+              name: true,
+              slug: true,
+            },
+          },
+        },
+      },
+      postType: {
+        select: {
+          slug: true,
+        },
+      },
+    },
+    take: 2,
+  });
+
+ 
   return (
     <Container>
       <p className="capitalize font-semibold text-5xl">{blog.title}</p>
       {blog.imageUrl && (
         <div className="relative border mt-4 h-[350px] rounded-md overflow-hidden">
           <ImageComponent
-          imgClassName="object-contain"
+            imgClassName="object-contain"
             src={blog.imageUrl}
             alt={blog.title + "image"}
             className=" overflow-hidden absolute top-0 left-[50%] translate-x-[-50%] z-30 h-full"
           />
           <ImageComponent
-          
             src={blog.imageUrl}
             alt={blog.title + "image"}
             className=" w-full   rounded-lg overflow-hidden h-full"
@@ -136,6 +204,18 @@ const page = async ({ params }: Props) => {
       <div className="mt-12">
         <BlogEditor content={blog.content} />
       </div>
+      {relatedBlogs.length ? (
+        <div className="mt-8">
+          <p className="font-semibold capitalize tracking-wide text-4xl">
+            Related Blogs
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
+            {relatedBlogs.map((blog) => (
+              <BlogCard key={blog.id} post={blog} isMain={true} />
+            ))}
+          </div>
+        </div>
+      ) : undefined}
     </Container>
   );
 };
