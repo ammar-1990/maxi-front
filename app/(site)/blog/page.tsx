@@ -10,6 +10,7 @@ type Props = {
     category: string | undefined;
     topic: string[] | undefined;
     blogStyle: string[] | undefined;
+    pageNumber:string | undefined
   }>;
 };
 
@@ -17,7 +18,17 @@ type Props = {
 export const revalidate = 0
 
 const page = async ({ searchParams }: Props) => {
-  const { category, topic, blogStyle } = await searchParams;
+  const { category, topic, blogStyle,pageNumber } = await searchParams;
+  let usedPageNumber = +(pageNumber ?? 1)
+  if (
+    !usedPageNumber ||
+    isNaN(Number(usedPageNumber)) ||
+    Number(usedPageNumber) < 1 ||
+    !Number.isInteger(Number(usedPageNumber))
+  ) {
+    console.warn("Invalid page param::", pageNumber);
+    usedPageNumber = 1;
+  }
   return (
     <div className="p-3">
       <CategoriesFeed category={category} />
@@ -30,7 +41,7 @@ const page = async ({ searchParams }: Props) => {
         {/* blogs */}
         <div className="md:col-span-2 xl:col-span-4">
           <SuspenseComponent>
-            <BlogsFeed postType={blogStyle} subCategory={topic} category={category}/>
+            <BlogsFeed postType={blogStyle} subCategory={topic} category={category} pageNumber={+usedPageNumber}/>
           </SuspenseComponent>
         </div>
       </Container>

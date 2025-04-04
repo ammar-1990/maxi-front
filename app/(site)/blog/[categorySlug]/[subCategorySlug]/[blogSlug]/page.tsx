@@ -107,6 +107,7 @@ const page = async ({ params }: Props) => {
       postType: {
         select: {
           slug: true,
+          name:true
         },
       },
     },
@@ -142,7 +143,7 @@ const page = async ({ params }: Props) => {
 
  
 
-  const relatedBlogs = await prisma.post.findMany({
+  const relatedBlogsRes =  prisma.post.findMany({
     where: {
       AND: [
         {
@@ -174,12 +175,54 @@ const page = async ({ params }: Props) => {
       postType: {
         select: {
           slug: true,
+  
         },
       },
     },
-    take: 2,
+    take: 4,
   });
 
+  const relatedTopicsRes =  prisma.post.findMany({
+    where: {
+      AND: [
+        {
+          postType: {
+            slug: blog.postType.slug,
+          },
+        },
+        {
+          NOT: {
+            slug: blog.slug,
+          },
+        },
+      ],
+     
+    },
+    include: {
+      subCategory: {
+        select: {
+          slug: true,
+          name: true,
+          category: {
+            select: {
+              name: true,
+              slug: true,
+            },
+          },
+        },
+      },
+      postType: {
+        select: {
+          slug: true,
+        },
+      },
+    },
+    take: 4,
+  });
+
+
+
+const [relatedBlogs,relatedTopics] = await Promise.all([relatedBlogsRes,relatedTopicsRes ])
  
   return (
     <Container>
@@ -204,6 +247,7 @@ const page = async ({ params }: Props) => {
       <div className="mt-12">
         <BlogEditor content={blog.content} />
       </div>
+      {/* related blogs */}
       {relatedBlogs.length ? (
         <div className="mt-8">
           <p className="font-semibold capitalize tracking-wide text-4xl">
@@ -211,6 +255,20 @@ const page = async ({ params }: Props) => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
             {relatedBlogs.map((blog) => (
+              <BlogCard key={blog.id} post={blog} isMain={true} />
+            ))}
+          </div>
+        </div>
+      ) : undefined}
+
+      {/* related topics */}
+      {relatedTopics.length ? (
+        <div className="mt-8">
+          <p className="font-semibold capitalize tracking-wide text-4xl">
+            Other {blog.postType.name} blogs
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
+            {relatedTopics.map((blog) => (
               <BlogCard key={blog.id} post={blog} isMain={true} />
             ))}
           </div>
