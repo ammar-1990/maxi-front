@@ -10,6 +10,7 @@ import React from "react";
 import { subHours } from "date-fns";
 import Link from "next/link";
 import BlogCard from "../../../_components/BlogCard";
+import Breadcrumbs from "@/app/_components/BreadCrumps";
 
 type Props = {
   params: Promise<{
@@ -97,9 +98,11 @@ const page = async ({ params }: Props) => {
       subCategory: {
         select: {
           slug: true,
+          name:true,
           category: {
             select: {
               slug: true,
+              name:true
             },
           },
         },
@@ -107,7 +110,7 @@ const page = async ({ params }: Props) => {
       postType: {
         select: {
           slug: true,
-          name:true
+          name: true,
         },
       },
     },
@@ -138,12 +141,7 @@ const page = async ({ params }: Props) => {
     });
   }
 
- 
- 
-
- 
-
-  const relatedBlogsRes =  prisma.post.findMany({
+  const relatedBlogsRes = prisma.post.findMany({
     where: {
       AND: [
         {
@@ -157,7 +155,6 @@ const page = async ({ params }: Props) => {
           },
         },
       ],
-     
     },
     include: {
       subCategory: {
@@ -175,14 +172,13 @@ const page = async ({ params }: Props) => {
       postType: {
         select: {
           slug: true,
-  
         },
       },
     },
     take: 4,
   });
 
-  const relatedTopicsRes =  prisma.post.findMany({
+  const relatedTopicsRes = prisma.post.findMany({
     where: {
       AND: [
         {
@@ -196,7 +192,6 @@ const page = async ({ params }: Props) => {
           },
         },
       ],
-     
     },
     include: {
       subCategory: {
@@ -220,12 +215,34 @@ const page = async ({ params }: Props) => {
     take: 4,
   });
 
+  const [relatedBlogs, relatedTopics] = await Promise.all([
+    relatedBlogsRes,
+    relatedTopicsRes,
+  ]);
 
-
-const [relatedBlogs,relatedTopics] = await Promise.all([relatedBlogsRes,relatedTopicsRes ])
- 
   return (
     <Container>
+      <Breadcrumbs
+      className="my-8"
+        items={[
+          {
+            title:'Home',
+            href: `/`,
+          },
+          {
+            title:blog.subCategory.category.name,
+            href: `/blog?category=${blog.subCategory.category.slug}`,
+          },
+          {
+            title: blog.subCategory.name,
+            href: `/blog?category=${blog.subCategory.category.slug}&topic=${blog.subCategory.slug}`,
+          },
+          {
+            title:blog.title,
+            href: ``,
+          },
+        ]}
+      />
       <p className="capitalize font-semibold text-5xl">{blog.title}</p>
       {blog.imageUrl && (
         <div className="relative border mt-4 h-[350px] rounded-md overflow-hidden">
@@ -265,7 +282,7 @@ const [relatedBlogs,relatedTopics] = await Promise.all([relatedBlogsRes,relatedT
       {relatedTopics.length ? (
         <div className="mt-8">
           <p className="font-semibold capitalize tracking-wide text-4xl">
-            Other {blog.postType.name} blogs
+            Other '{blog.postType.name}' blogs
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
             {relatedTopics.map((blog) => (

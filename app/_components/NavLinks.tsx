@@ -20,13 +20,23 @@ const NavLinks = (props: Props) => {
         {
             title:'blogs',
             href:'/blog',    
-            active:pathname === '/blog',           
+            active:pathname.includes('blog'),           
         },
         {
-            title:'about',
-            href:'/about',       
-            active:pathname === '/about',        
-        },
+            title: "newsletter",
+            href: "/newsletter",
+            active: pathname === "/newsletter",
+          },
+          {
+            title: "about",
+            href: "/about",
+            active: pathname === "/about",
+          },
+          {
+            title: "contact",
+            href: "/contact",
+            active: pathname === "/contact",
+          },
         
 
     ]

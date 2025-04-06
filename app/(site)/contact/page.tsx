@@ -1,27 +1,89 @@
-import Container from '@/app/_components/Container'
-import React from 'react'
+import Breadcrumbs from "@/app/_components/BreadCrumps";
+import Container from "@/app/_components/Container";
+import { Mail, MessageCircle, Send } from "lucide-react";
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const page = (props: Props) => {
   return (
-    <Container className='min-h-[70vh]'>
-        <h1 className="text-3xl font-bold mb-4">Get in Touch</h1>
+    <Container className="min-h-[70vh]">
+      <Breadcrumbs
+        className="mb-8"
+        items={[{ title: "Home", href: "/" }, { title: "Contact Us" }]}
+      />
 
-<p className="mb-4">
-  Have feedback, a question, or want to collaborate? I’d love to hear from you.
-</p>
+      <main className="max-w-3xl mx-auto space-y-12 py-12">
+        {/* Hero Section */}
+        <section className="text-center space-y-4">
+          <div className="flex justify-center">
+            <MessageCircle className="w-8 h-8 text-site-primary" />
+          </div>
+          <h1 className="text-3xl font-bold">Get in Touch</h1>
+          <p className="text-muted-foreground max-w-lg mx-auto text-sm">
+            Have feedback, a question, or want to collaborate? I’d love to hear from you.
+          </p>
+        </section>
 
-<p className="mb-4">
-  Reach me anytime at <a href="mailto:your@email.com" className="underline text-primary">your@email.com</a>
-</p>
+        {/* Contact Methods */}
+        <section className="grid sm:grid-cols-2 gap-6">
+          <div className="flex items-start gap-4 p-4 bg-muted/40 border rounded-lg shadow-sm">
+            <Mail className="w-6 h-6 text-site-primary mt-1" />
+            <div>
+              <h3 className="font-semibold text-sm">Email</h3>
+              <a
+                href="mailto:your@email.com"
+                className="text-sm underline text-primary"
+              >
+                your@email.com
+              </a>
+              <p className="text-xs text-muted-foreground mt-1">
+                I usually reply within 1–2 business days.
+              </p>
+            </div>
+          </div>
 
-<p className="text-muted-foreground text-sm">
-  I usually reply within 1–2 days. Looking forward to connecting.
-</p>
+          <div className="flex items-start gap-4 p-4 bg-muted/40 border rounded-lg shadow-sm">
+            <Send className="w-6 h-6 text-site-primary mt-1" />
+            <div>
+              <h3 className="font-semibold text-sm">Social</h3>
+              <p className="text-sm">
+                DM me on{" "}
+                <a
+                  href="https://instagram.com/themaxiworld_"
+                  className="underline text-primary"
+                  target="_blank"
+                >
+                  Instagram
+                </a>{" "}
+                or{" "}
+                <a
+                  href="https://tiktok.com/@themaxiworld_"
+                  className="underline text-primary"
+                  target="_blank"
+                >
+                  TikTok
+                </a>
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Follow for updates, behind-the-scenes, and more.
+              </p>
+            </div>
+          </div>
+        </section>
 
+        {/* Optional Contact Form Placeholder */}
+        <section className="border-t pt-8 space-y-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            Prefer using a form? We’re working on it! For now, shoot us an email or DM.
+          </p>
+          <p className="text-xs text-muted-foreground italic">
+            MAXI is all about real human conversations.
+          </p>
+        </section>
+      </main>
     </Container>
-  )
-}
+  );
+};
 
-export default page
+export default page;

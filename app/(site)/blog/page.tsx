@@ -4,6 +4,7 @@ import CategoriesFeed from "./_components/CategoriesFeed";
 import Filter from "./_components/Filter";
 import SuspenseComponent from "@/components/SuspensComponent";
 import BlogsFeed from "./_components/BlogsFeed";
+import Breadcrumbs from "@/app/_components/BreadCrumps";
 
 type Props = {
   searchParams: Promise<{
@@ -31,6 +32,15 @@ const page = async ({ searchParams }: Props) => {
   }
   return (
     <div className="p-3">
+      <Container>
+      <Breadcrumbs
+      categorySlug={category}
+    
+      className="mb-10"
+      items={[{title:'Home',href:'/'},{title:'Blog',href:'/blog'}]}
+      />
+      </Container>
+ 
       <CategoriesFeed category={category} />
       <Container className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 mt-12 gap-2">
         {/* filter */}
