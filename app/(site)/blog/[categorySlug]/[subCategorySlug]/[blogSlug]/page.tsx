@@ -282,7 +282,7 @@ const page = async ({ params }: Props) => {
       {relatedTopics.length ? (
         <div className="mt-8">
           <p className="font-semibold capitalize tracking-wide text-4xl">
-            Other '{blog.postType.name}' blogs
+            Other &apos;{blog.postType.name}&apos; blogs
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
             {relatedTopics.map((blog) => (

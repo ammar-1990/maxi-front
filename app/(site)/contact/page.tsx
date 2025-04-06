@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/app/_components/BreadCrumps";
 import Container from "@/app/_components/Container";
 import { Mail, MessageCircle, Send } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -49,21 +50,21 @@ const page = (props: Props) => {
               <h3 className="font-semibold text-sm">Social</h3>
               <p className="text-sm">
                 DM me on{" "}
-                <a
+                <Link
                   href="https://instagram.com/themaxiworld_"
                   className="underline text-primary"
                   target="_blank"
                 >
                   Instagram
-                </a>{" "}
+                </Link>{" "}
                 or{" "}
-                <a
+                <Link
                   href="https://tiktok.com/@themaxiworld_"
                   className="underline text-primary"
                   target="_blank"
                 >
                   TikTok
-                </a>
+                </Link>
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 Follow for updates, behind-the-scenes, and more.

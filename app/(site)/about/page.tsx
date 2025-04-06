@@ -203,7 +203,7 @@ const page = (props: Props) => {
               something worth sharing — across every medium.
             </p>
             <p>
-              Whether you're a curious reader, a visual learner, or a future fan of animated stories —
+              Whether you&apos;re a curious reader, a visual learner, or a future fan of animated stories —
               MAXI is built for you.
             </p>
           </div>
