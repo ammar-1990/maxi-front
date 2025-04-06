@@ -11,6 +11,7 @@ import {
   Video,
   Baby,
 } from "lucide-react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -216,18 +217,18 @@ const page = (props: Props) => {
             Browse blog topics, watch a video, or subscribe to the newsletter.
           </p>
           <div className="flex justify-center gap-4">
-            <a
+            <Link
               href="/blog"
               className="inline-block px-5 py-2 text-sm font-medium bg-site-primary text-white rounded-lg shadow hover:bg-site-primary/90 transition"
             >
               Visit Blog
-            </a>
-            <a
+            </Link>
+            <Link
               href="/newsletter"
               className="inline-block px-5 py-2 text-sm font-medium border border-site-primary text-site-primary rounded-lg hover:bg-site-primary/10 transition"
             >
               Join Newsletter
-            </a>
+            </Link>
           </div>
         </section>
       </main>

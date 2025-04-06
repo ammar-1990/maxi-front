@@ -32,12 +32,12 @@ const page = (props: Props) => {
             <Mail className="w-6 h-6 text-site-primary mt-1" />
             <div>
               <h3 className="font-semibold text-sm">Email</h3>
-              <a
+              <Link
                 href="mailto:your@email.com"
                 className="text-sm underline text-primary"
               >
                 your@email.com
-              </a>
+              </Link>
               <p className="text-xs text-muted-foreground mt-1">
                 I usually reply within 1–2 business days.
               </p>

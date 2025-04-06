@@ -25,17 +25,17 @@ const NavLinks = (props: Props) => {
         {
             title: "newsletter",
             href: "/newsletter",
-            active: pathname === "/newsletter",
+            active: pathname.includes('newsletter'),
           },
           {
             title: "about",
             href: "/about",
-            active: pathname === "/about",
+            active:pathname.includes('about'),
           },
           {
             title: "contact",
             href: "/contact",
-            active: pathname === "/contact",
+            active: pathname.includes('contact'),
           },
         
 
