@@ -14,7 +14,7 @@ import {
 
 const PrivacyPolicyPage = () => {
   return (
-    <Container>
+    <Container className="p-3">
       <Breadcrumbs
         className="mb-8"
         items={[

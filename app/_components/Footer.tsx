@@ -3,8 +3,9 @@ import NewsletterForm from "../(site)/newsletter/_component/NewsletterForm";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
+import FooterCategories from "./FooterCategories";
 
-const Footer = () => {
+const Footer = async() => {
   return (
     <footer className="bg-muted/50 text-muted-foreground py-10 mt-12 border-t">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -39,17 +40,7 @@ const Footer = () => {
         {/* Categories */}
         <div>
           <h4 className="font-semibold mb-2 text-foreground">Categories</h4>
-          <ul className="space-y-1 text-sm capitalize">
-            <li>
-              <Link href="/health">Health</Link>
-            </li>
-            <li>
-              <Link href="/tech">Tech</Link>
-            </li>
-            <li>
-              <Link href="/lifestyle">Lifestyle</Link>
-            </li>
-          </ul>
+         <FooterCategories />
         </div>
 
         {/* Social / Newsletter */}

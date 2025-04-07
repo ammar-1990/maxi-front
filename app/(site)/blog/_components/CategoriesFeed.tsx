@@ -10,7 +10,7 @@ type Props = {category:string | undefined};
 const CategoriesFeed = async ({category}: Props) => {
   const categories = await prisma.category.findMany();
   return (
-    <Container className="flex items-center gap-3 justify-center">
+    <Container className="flex items-center gap-3 justify-center flex-wrap">
       <SuperButton
         buttonType="pushButton"
         href="/blog"

@@ -8,7 +8,7 @@ type Props = {};
 
 const page = (props: Props) => {
   return (
-    <Container className="min-h-[70vh]">
+    <Container className="min-h-[70vh] p-3">
       <Breadcrumbs
         className="mb-8"
         items={[{ title: "Home", href: "/" }, { title: "Contact Us" }]}

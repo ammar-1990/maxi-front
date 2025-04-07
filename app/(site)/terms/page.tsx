@@ -16,7 +16,7 @@ import {
 
 const TermsPage = () => {
   return (
-    <Container>
+    <Container className="p-3">
       <Breadcrumbs
         className="mb-8"
         items={[{ title: "Home", href: "/" }, { title: "Terms and Conditions" }]}

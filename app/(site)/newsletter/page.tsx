@@ -23,7 +23,7 @@ type Props = {}
 
 const page = (props: Props) => {
   return (
-    <Container>
+    <Container className='p-3'>
          <Breadcrumbs
          className='mb-8'
                   items={[{title:'Home',href:'/'},{title:'Newsletter'}]}

@@ -221,7 +221,7 @@ const page = async ({ params }: Props) => {
   ]);
 
   return (
-    <Container>
+    <Container className="p-3">
       <Breadcrumbs
       className="my-8"
         items={[

@@ -17,12 +17,12 @@ export default function Home() {
             <CategoriesFeed />
           </SuspenseComponent>
         </div>
-        <div className="mt-16">
+        <div className="mt-26">
           <SuspenseComponent>
             <FeaturedPosts />
           </SuspenseComponent>
         </div>
-        <div className="mt-16">
+        <div className="mt-26">
           <SuspenseComponent>
             <TrendingPosts />
           </SuspenseComponent>
