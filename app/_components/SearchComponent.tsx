@@ -55,7 +55,7 @@ const SearchComponent = (props: Props) => {
                       href={`/blog/${post.subCategory.category.slug}/${post.subCategory.slug}/${post.slug}`}
                       className="flex flex-col text-start p-2 border rounded hover:bg-muted w-full relative"
                     >
-                      <span className="top-3 right-3 bg-site-primary z-10 text-white text-xs rounded-full px-3 py-1 absolute capitalize font-[500]">
+                      <span className="top-1 right-1 bg-site-primary z-10 text-white text-[8px] rounded-full px-2 py-0.5 absolute capitalize font-[500]">
                         {post.subCategory.category.name}
                       </span>
                       <p className="text-xs font-[500] ">
