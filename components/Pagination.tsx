@@ -24,6 +24,8 @@ const Pagination = ({ count, href }: Props) => {
     
         return `${href}?${params.toString()}`;
       };
+
+      if(!count) return
   return (
     <div className="flex items-center justify-between w-full">
       <SuperButton
