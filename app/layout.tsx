@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { BASE_URL } from "@/lib/Types";
 
 
 
