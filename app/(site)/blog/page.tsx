@@ -5,6 +5,8 @@ import Filter from "./_components/Filter";
 import SuspenseComponent from "@/components/SuspensComponent";
 import BlogsFeed from "./_components/BlogsFeed";
 import Breadcrumbs from "@/app/_components/BreadCrumps";
+import { Metadata } from "next";
+import { BASE_URL } from "@/lib/Types";
 
 type Props = {
   searchParams: Promise<{
@@ -14,6 +16,58 @@ type Props = {
     pageNumber:string | undefined
   }>;
 };
+
+export const metadata: Metadata = {
+  title: 'Explore Blogs | MAXI',
+  description:
+    'Browse all MAXI blog posts — from tech and health to philosophy and storytelling. Use filters to discover exactly what matters to you.',
+  alternates: {
+    canonical: `https://${BASE_URL}/blog`,
+  },
+  keywords: [
+    'MAXI blogs',
+    'Tech articles',
+    'Health content',
+    'AI blogs',
+    'Spirituality stories',
+    'Philosophy blog',
+  ],
+  openGraph: {
+    title: 'Explore Blogs | MAXI',
+    description:
+      'Discover our full collection of blogs — searchable by category, topic, or post type. Curated to inform and inspire.',
+    url: `https://${BASE_URL}/blog`,
+    siteName: 'MAXI',
+    type: 'website',
+    images: [
+      {
+        url: `https://themaxiworld.com/maxi-seo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'MAXI Hero',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Explore Blogs | MAXI',
+    description:
+      'Find exactly what you need — tech, health, philosophy, or storytelling. Filtered, refined, and worth your time.',
+      images: [
+        {
+          url: `https://themaxiworld.com/maxi-seo.png`,
+          width: 1200,
+          height: 630,
+          alt: 'MAXI Hero',
+        },
+      ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 
 
 export const revalidate = 0

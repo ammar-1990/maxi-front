@@ -11,6 +11,7 @@ import { subHours } from "date-fns";
 import Link from "next/link";
 import BlogCard from "../../../_components/BlogCard";
 import Breadcrumbs from "@/app/_components/BreadCrumps";
+import { BASE_URL } from "@/lib/Types";
 
 type Props = {
   params: Promise<{
@@ -51,13 +52,21 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { blogSlug } = await params;
+  const { blogSlug,categorySlug,subCategorySlug } = await params;
   console.log("SLUG", blogSlug);
 
   const blog = await prisma.post.findUnique({
     where: {
       slug: blogSlug,
+      
     },
+    include:{
+      tags:{
+        select:{
+          name:true
+        }
+      }
+    }
   });
   if (!blog) {
     return {
@@ -73,10 +82,31 @@ export async function generateMetadata(
   return {
     title: blog.seoTitle,
     description: blog.seoDescription,
+    alternates:{
+      canonical:`https://${BASE_URL}/blog/${categorySlug}/${subCategorySlug}/${blogSlug}`
+    },
+    metadataBase: new URL(`https://${BASE_URL}`),
     openGraph: {
       title: blog.seoTitle,
       description: blog.seoDescription,
-      ...(blog.imageUrl && { images: [blog.imageUrl] }),
+      ...(blog.imageUrl && { images: [{  width: 1200,
+        height: 630,
+        alt: blog.title,url:blog.imageUrl}] }),
+      url: `https://${BASE_URL}/blog/${categorySlug}/${subCategorySlug}/${blogSlug}`,
+      siteName:'MAXI',
+      type:'article',
+      tags:blog.tags.map(tag=>(tag.name)),
+      
+      
+    },
+    keywords: blog.tags.map(tag => tag.name).join(', '),
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.seoTitle || blog.title,
+      description: blog.seoDescription || blog.excerpt,
+      ...(blog.imageUrl && { images: [{  width: 1200,
+        height: 630,
+        alt: blog.title,url:blog.imageUrl}] }),
     },
   };
 }

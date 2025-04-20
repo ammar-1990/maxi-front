@@ -1,10 +1,56 @@
 import Breadcrumbs from "@/app/_components/BreadCrumps";
 import Container from "@/app/_components/Container";
+import { BASE_URL, EMAIL, INSTAGRAM, TIKTOK, YOUTUBE } from "@/lib/Types";
 import { Mail, MessageCircle, Send } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 type Props = {};
+
+export const metadata: Metadata = {
+  title: 'Contact Us | MAXI',
+  description:
+    'Have questions, feedback, or collaboration ideas? Reach out to the MAXI team — we’d love to hear from you.',
+  alternates: {
+    canonical: `https://${BASE_URL}/contact`,
+  },
+  openGraph: {
+    title: 'Contact MAXI',
+    description:
+      'Whether it’s a business inquiry or a friendly hello — get in touch with the team behind MAXI.',
+    url: `https://${BASE_URL}/contact`,
+    siteName: 'MAXI',
+    type: 'website',
+    images: [
+      {
+        url: `https://themaxiworld.com/maxi-seo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'MAXI Hero',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact MAXI',
+    description:
+      'Have a question, collaboration request, or feedback? Get in touch — we’re listening.',
+      images: [
+        {
+          url: `https://themaxiworld.com/maxi-seo.png`,
+          width: 1200,
+          height: 630,
+          alt: 'MAXI Hero',
+        },
+      ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const page = (props: Props) => {
   return (
@@ -33,10 +79,10 @@ const page = (props: Props) => {
             <div>
               <h3 className="font-semibold text-sm">Email</h3>
               <Link
-                href="mailto:your@email.com"
+                href={EMAIL}
                 className="text-sm underline text-primary"
               >
-                your@email.com
+                {EMAIL}
               </Link>
               <p className="text-xs text-muted-foreground mt-1">
                 I usually reply within 1–2 business days.
@@ -48,25 +94,18 @@ const page = (props: Props) => {
             <Send className="w-6 h-6 text-site-primary mt-1" />
             <div>
               <h3 className="font-semibold text-sm">Social</h3>
-              <p className="text-sm">
-                DM me on{" "}
-                <Link
-                  href="https://instagram.com/themaxiworld_"
-                  className="underline text-primary"
-                  target="_blank"
-                >
-                  Instagram
-                </Link>{" "}
-                or{" "}
-                <Link
-                  href="https://tiktok.com/@themaxiworld_"
-                  className="underline text-primary"
-                  target="_blank"
-                >
-                  TikTok
-                </Link>
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <div className="flex items-center gap-4 mt-2 text-muted-foreground">
+              <Link href={TIKTOK} target="_blank">
+              <FaTiktok className="hover:text-black size-6" />
+              </Link>
+              <Link href={INSTAGRAM} target="_blank">
+                <FaInstagram className="hover:text-[#E1306C] size-6" />
+              </Link>
+              <Link href={YOUTUBE} target="_blank">
+              <FaYoutube className="hover:text-red-600 transition size-6" />
+              </Link>
+            </div>
+              <p className="text-xs text-muted-foreground mt-3">
                 Follow for updates, behind-the-scenes, and more.
               </p>
             </div>
@@ -75,9 +114,7 @@ const page = (props: Props) => {
 
         {/* Optional Contact Form Placeholder */}
         <section className="border-t pt-8 space-y-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Prefer using a form? We’re working on it! For now, shoot us an email or DM.
-          </p>
+      
           <p className="text-xs text-muted-foreground italic">
             MAXI is all about real human conversations.
           </p>

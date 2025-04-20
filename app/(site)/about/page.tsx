@@ -12,6 +12,7 @@ import {
   Baby,
 } from "lucide-react";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/Types";
 
 type Props = {};
 
@@ -37,14 +38,14 @@ export const metadata: Metadata = {
     title: "About MAXI | More Than a Blog",
     description:
       "Discover how MAXI brings together thoughtful articles, visual storytelling, and platform-driven content across YouTube, TikTok, Instagram, and beyond.",
-    url: "https://yourdomain.com/about",
+    url: `https://${BASE_URL}/about`,
     siteName: "MAXI",
     images: [
       {
-        url: "https://yourdomain.com/images/og-about.jpg",
+        url: `https://themaxiworld.com/maxi-seo.png`,
         width: 1200,
         height: 630,
-        alt: "MAXI About Page Preview",
+        alt: 'MAXI Hero',
       },
     ],
     type: "website",
@@ -54,10 +55,17 @@ export const metadata: Metadata = {
     title: "About MAXI | More Than a Blog",
     description:
       "Get to know MAXI — the media brand blending blogs, videos, and visual storytelling across modern platforms.",
-    images: ["https://yourdomain.com/images/og-about.jpg"],
-    creator: "@yourtwitterhandle",
+      images: [
+        {
+          url: `https://themaxiworld.com/maxi-seo.png`,
+          width: 1200,
+          height: 630,
+          alt: 'MAXI Hero',
+        },
+      ],
+    
   },
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL(`https://${BASE_URL}`),
   alternates: {
     canonical: "/about",
   },

@@ -4,6 +4,7 @@ import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
 import FooterCategories from "./FooterCategories";
+import { INSTAGRAM, TIKTOK, YOUTUBE } from "@/lib/Types";
 
 const Footer = async() => {
   return (
@@ -57,13 +58,13 @@ const Footer = async() => {
               </div>
             </li>
             <li className="flex items-center gap-4 mt-8">
-              <Link href="https://twitter.com/yourhandle" target="_blank">
+              <Link href={TIKTOK} target="_blank">
               <FaTiktok className="hover:text-black size-6" />
               </Link>
-              <Link href="https://instagram.com/yourhandle" target="_blank">
+              <Link href={INSTAGRAM} target="_blank">
                 <FaInstagram className="hover:text-[#E1306C] size-6" />
               </Link>
-              <Link href="https://youtube.com/@yourchannel" target="_blank">
+              <Link href={YOUTUBE} target="_blank">
               <FaYoutube className="hover:text-red-600 transition size-6" />
               </Link>
             </li>

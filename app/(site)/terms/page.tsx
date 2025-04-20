@@ -13,6 +13,45 @@ import {
   Slash,
   Link as LinkIcon,
 } from "lucide-react";
+import { Metadata } from "next";
+import { BASE_URL } from "@/lib/Types";
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions | MAXI',
+  description:
+    'Review the terms for accessing and using MAXI — our original blogs, video content, and media experiences.',
+  alternates: {
+    canonical: `https://${BASE_URL}/terms`,
+  },
+  openGraph: {
+    title: 'Terms & Conditions | MAXI',
+    description:
+      'These Terms outline your rights and the proper use of MAXI’s original content, including articles, visuals, and videos.',
+    url: `https://${BASE_URL}/terms`,
+    siteName: 'MAXI',
+    type: 'article',
+    images: [
+      {
+        url: `https://themaxiworld.com/maxi-seo.pngg`,  // optional
+        width: 1200,
+        height: 630,
+        alt: 'Terms & Conditions',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms & Conditions | MAXI',
+    description:
+      'These Terms outline your rights and the proper use of MAXI’s original content, including articles, visuals, and videos.',
+    images: ['https://themaxiworld.com/maxi-seo.png'], 
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 
 const TermsPage = () => {
   return (

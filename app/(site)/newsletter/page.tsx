@@ -3,6 +3,53 @@ import React from 'react'
 import NewsletterForm from './_component/NewsletterForm'
 import Breadcrumbs from '@/app/_components/BreadCrumps'
 import { Mail, ShieldCheck, Brain } from "lucide-react";
+import { Metadata } from 'next';
+import { BASE_URL } from '@/lib/Types';
+
+
+export const metadata: Metadata = {
+  title: 'Newsletter | MAXI',
+  description:
+    'Join the MAXI newsletter to get fresh blogs and videos delivered weekly — crafted to inform, inspire, and entertain.',
+  alternates: {
+    canonical: `https://${BASE_URL}/newsletter`,
+  },
+  openGraph: {
+    title: 'Subscribe to the MAXI Newsletter',
+    description:
+      'Get handpicked articles, visuals, and video highlights from the world of tech, philosophy, wellness, and beyond — straight to your inbox.',
+    url: `https://${BASE_URL}/newsletter`,
+    images: [
+      {
+        url: `https://themaxiworld.com/maxi-seo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'MAXI Hero',
+      },
+    ],
+    siteName: 'MAXI',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Subscribe to the MAXI Newsletter',
+    description:
+      'Fresh blogs and curated content, every week — from AI and health to spirituality and stories.',
+      images: [
+        {
+          url: `https://themaxiworld.com/maxi-seo.png`,
+          width: 1200,
+          height: 630,
+          alt: 'MAXI Hero',
+        },
+      ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 
 const features = [
   {

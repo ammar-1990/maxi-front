@@ -11,6 +11,46 @@ import {
   CheckCircle,
   RefreshCw,
 } from "lucide-react";
+import { Metadata } from "next";
+import { BASE_URL } from "@/lib/Types";
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | MAXI',
+  description:
+    'Discover how MAXI collects and uses basic data like newsletter subscriptions and analytics. We respect your privacy and never sell your data.',
+  alternates: {
+    canonical: `https://${BASE_URL}/privacy`,
+  },
+  openGraph: {
+    title: 'Privacy Policy | MAXI',
+    description:
+      'MAXI collects minimal data solely for newsletter subscriptions and site analytics. Your privacy is protected — always.',
+    url: `https://${BASE_URL}/privacy`,
+    siteName: 'MAXI',
+    type: 'article',
+    images: [
+      {
+        url: `https://themaxiworld.com/maxi-seo.pngg`,  // optional
+        width: 1200,
+        height: 630,
+        alt: 'Terms & Conditions',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | MAXI',
+    description:
+      'MAXI collects minimal data solely for newsletter subscriptions and site analytics. Your privacy is protected — always.',
+      images: ['https://themaxiworld.com/maxi-seo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  
+};
+
 
 const PrivacyPolicyPage = () => {
   return (
